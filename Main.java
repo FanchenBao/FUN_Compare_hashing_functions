@@ -6,13 +6,13 @@ public class Main {
         double alpha = 0.1;
         double maxAlpha = 0.9;
         int max = 1000;
-        int repeat = 100;
+        int repeat = 1000;
 
         long startTime = System.currentTimeMillis();
 
 //        compareLinearQuadratic(alpha, maxAlpha, max, repeat);
-//        optimalQuadraticCoefficient(alpha, maxAlpha, max, repeat);
-        findBadQuadraticPairs(1, max, repeat);
+        optimalQuadraticCoefficient(alpha, maxAlpha, max, repeat);
+//        findBadQuadraticPairs(1, max, repeat);
 
         long endTime = System.currentTimeMillis();
         System.out.println("Execution time: " + (double) (endTime - startTime) / (1000 * 60 * 60) + "hours\n");
@@ -64,8 +64,8 @@ public class Main {
         double optimalc1 = 0, optimalc2 = 0;
         double minCL = 1000;
 
-        StringBuilder output = new StringBuilder("Avg chain length comparison of different c1, c2 pair.\nRepetition: " + repeat +
-                "\nalpha\tc1\tc2\tmin_chain_len\n");
+        StringBuilder output = new StringBuilder("Optimal c1, c2 pair in terms of average chain length.\nRepetition: " + repeat +
+                "\nalpha\tc1\tc2\tmin_ave_chain_len\n");
 
         // compute for each alpha value
         while (alpha <= maxAlpha){
@@ -97,7 +97,7 @@ public class Main {
     public static void compareLinearQuadratic(double alpha, double maxAlpha, int max, int repeat){
         // compare linear probing and quadratic probing in terms of average chain length.
         // The quadratic pair is hard coded as c1 = 0.2, c2 = 0.6
-        double c1 = 0.2, c2 = 0.6;
+        double c1 = 0.4, c2 = 0.4;
         double chainLength = 0;
 
         String output = "Average chain length comparison.\nRepetition: " + repeat +
